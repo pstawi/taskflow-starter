@@ -111,6 +111,8 @@ function handleTaskChange(e) {
   }
 }
 
+/* ajout d'un commentaire pour tester le CI/CD */
+
 /**
  * Gère la suppression des tâches terminées
  */
