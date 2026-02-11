@@ -9,7 +9,9 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text', 'html', 'lcov'],
       reportsDirectory: './coverage',
-      exclude: ['node_modules/', 'tests/', '*.config.js'],
+      // On ne mesure la qualité que sur la logique métier (tasks.js),
+      // pas sur le fichier UI app.js.
+      exclude: ['node_modules/', 'tests/', '*.config.js', 'src/app.js'],
       thresholds: {
         lines: 70,
         branches: 70,
