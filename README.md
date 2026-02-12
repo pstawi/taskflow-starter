@@ -2,7 +2,9 @@
 
 > Application de gestion de tâches - Projet fil rouge CI/CD
 
-[![CI](https://github.com/pstawi/taskflow-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/pstawi/taskflow-starter/actions/workflows/ci.yml)
+[![CI](https://github.com/pstawi/taskflow-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/pstawi/taskflow-starter/actions)
+[![Release](https://img.shields.io/github/v/release/pstawi/taskflow-starter)](https://github.com/pstawi/taskflow-starter/releases)
+[![Coverage](https://img.shields.io/badge/coverage-%3E70%25-brightgreen)](./coverage/)
 
 ## Description
 
