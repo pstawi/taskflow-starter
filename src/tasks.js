@@ -142,6 +142,7 @@ export function countTasks(tasks) {
   return { total, active, completed }
 }
 
+
 /**
  * Trie les tâches par priorité (high > medium > low)
  * @param {Array} tasks - Liste des tâches
@@ -151,3 +152,43 @@ export function sortByPriority(tasks) {
   const priorityOrder = { high: 0, medium: 1, low: 2 }
   return [...tasks].sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority])
 }
+
+/**
+ * Gestionnaire orienté objet pour les étapes TP qui manipulent une classe.
+ * S'appuie sur les fonctions utilitaires existantes du module.
+ */
+export class TaskManager {
+  constructor() {
+    this.tasks = loadTasks()
+  }
+
+  getTasks() {
+    return [...this.tasks]
+  }
+
+  addTask(text, priority = 'medium') {
+    const task = createTask(text, priority)
+    this.tasks = addTask(this.tasks, task)
+    saveTasks(this.tasks)
+    return task
+  }
+
+  removeTask(id) {
+    this.tasks = deleteTask(this.tasks, id)
+    saveTasks(this.tasks)
+  }
+
+  toggleTask(id) {
+    this.tasks = toggleTask(this.tasks, id)
+    saveTasks(this.tasks)
+  }
+
+  filterByStatus(status) {
+    if (status === 'all') return this.getTasks()
+    if (status === 'completed') return this.tasks.filter((t) => t.completed)
+    if (status === 'pending') return this.tasks.filter((t) => !t.completed)
+    return this.getTasks()
+  }
+}
+
+
