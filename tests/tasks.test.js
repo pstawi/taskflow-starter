@@ -19,6 +19,7 @@ import {
   sortByPriority,
   loadTasks,
   saveTasks,
+  TaskManager,
 } from '../src/tasks.js'
 
 // Mock léger de localStorage pour les fonctions loadTasks/saveTasks
@@ -262,6 +263,36 @@ describe('loadTasks / saveTasks', () => {
     const loaded = loadTasks()
     expect(loaded).toHaveLength(1)
     expect(loaded[0].text).toBe('Persistante')
+  })
+})
+
+describe('filterByStatus', () => {
+  let manager
+
+  beforeEach(() => {
+    localStorage.clear()
+    manager = new TaskManager()
+    manager.addTask('Task 1')
+    manager.addTask('Task 2')
+    manager.addTask('Task 3')
+    manager.toggleTask(manager.getTasks()[0].id) // Complete first task
+  })
+
+  test('should return all tasks with "all" filter', () => {
+    const filtered = manager.filterByStatus('all')
+    expect(filtered).toHaveLength(3)
+  })
+
+  test('should return only completed tasks', () => {
+    const filtered = manager.filterByStatus('completed')
+    expect(filtered).toHaveLength(1)
+    expect(filtered[0].completed).toBe(true)
+  })
+
+  test('should return only pending tasks', () => {
+    const filtered = manager.filterByStatus('pending')
+    expect(filtered).toHaveLength(2)
+    filtered.forEach((t) => expect(t.completed).toBe(false))
   })
 })
 
