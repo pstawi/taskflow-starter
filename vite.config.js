@@ -1,10 +1,10 @@
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  base: './',
+  base: '/taskflow-starter/',  // Nom de votre repo !
   build: {
     outDir: 'dist',
-    emptyOutDir: true,
+    sourcemap: true,
   },
   test: {
     globals: true,
