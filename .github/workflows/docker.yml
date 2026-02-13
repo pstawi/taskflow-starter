@@ -58,6 +58,5 @@ jobs:
 
       - name: Deploy to Render
         if: github.ref == 'refs/heads/main'
-        uses: gh-actions-workflows/deploy-docker-render@v1.1
-        with:
-          deploy-hook: ${{ secrets.RENDER_DEPLOY_HOOK }}
+        run: |
+          curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
