@@ -1,34 +1,50 @@
 # TaskFlow
 
-> Application de gestion de tâches - Projet fil rouge CI/CD
-
-[![CI](https://github.com/pstawi/taskflow-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/pstawi/taskflow-starter/actions)
-[![Release](https://img.shields.io/github/v/release/pstawi/taskflow-starter)](https://github.com/pstawi/taskflow-starter/releases)
+[![CI/CD](https://github.com/pstawi/taskflow-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/pstawi/taskflow-starter/actions)
+[![Release](https://img.shields.io/github/v/release/pstawi/taskflow-starter?cacheSeconds=300)](https://github.com/pstawi/taskflow-starter/releases)
 [![Coverage](https://img.shields.io/badge/coverage-%3E70%25-brightgreen)](./coverage/)
+
+> Application de gestion de tâches avec CI/CD complet
+
+## 🚀 Demo
+
+**GitHub Pages** : https://pstawi.github.io/taskflow-starter/  
+**Render** : https://taskflow-starter.onrender.com
 
 ## Description
 
-TaskFlow est une application web de gestion de tâches (todo list) que vous allez enrichir tout au long de la formation CI/CD.
+TaskFlow est une application web de gestion de tâches (todo list) avec un pipeline CI/CD complet.
 
 **Stack technique :**
 - Frontend : Vanilla JavaScript + Vite
-- Tests : Vitest
+- Tests : Vitest + Playwright (E2E)
 - Linting : ESLint + Prettier
-- Container : Docker
-- Déploiement : GitHub Pages
+- Container : Docker + nginx
+- Déploiement : GitHub Pages + Render
 
-## Installation
+## 🐳 Docker
 
 ```bash
-# Cloner le repository (après fork)
+docker pull ghcr.io/pstawi/taskflow-starter:main
+docker run -d -p 8080:80 ghcr.io/pstawi/taskflow-starter:main
+```
+
+## 🛠️ Development
+
+```bash
+# Cloner le repository
 git clone https://github.com/pstawi/taskflow-starter.git
-cd taskflow
+cd taskflow-starter
 
 # Installer les dépendances
 npm install
 
 # Lancer en développement
 npm run dev
+
+# Tests
+npm test
+npm run build
 ```
 
 ## Scripts disponibles
@@ -83,9 +99,21 @@ taskflow/
 - [ ] Publier v1.0.0
 
 ### Jour 5 : Déploiement
-- [ ] Compléter le Dockerfile
-- [ ] Push image sur ghcr.io
-- [ ] Déployer sur GitHub Pages
+- [x] Compléter le Dockerfile
+- [x] Push image sur ghcr.io
+- [x] Déployer sur GitHub Pages
+- [x] Déployer sur Render
+
+## 📦 CI/CD Pipeline
+
+- ✅ Lint (ESLint)
+- ✅ Test (Vitest + Coverage ≥ 70%)
+- ✅ E2E Tests (Playwright)
+- ✅ Build (Vite)
+- ✅ Docker (ghcr.io)
+- ✅ Deploy (GitHub Pages)
+- ✅ Deploy (Render via webhook)
+- ✅ Release (auto sur tag)
 
 ## Fonctionnalités de l'application
 
